@@ -13,10 +13,11 @@ use App\Http\Controllers\Admin\AdminReviewController;
 use App\Http\Controllers\Admin\AdminVoucherController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\User\ProductController;
 use Illuminate\Support\Facades\Session;
 
 // Trang chủ (kiểm tra session nếu người dùng đã đăng nhập)
-// Route::get('/', function () {   
+// Route::get('/', function () {
 //     if (Session::has('admin_user')) {
 //         return redirect()->route('admin.dashboard');
 //     } else {
@@ -47,7 +48,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         }
         return view('admin.auth.dashboard');
     })->name('dashboard');
-    
+
      // Dashboards
     Route::resource('dashboards', AdminDashboardController::class);
 
@@ -100,5 +101,5 @@ Route::get('/', function () {
 });
 
 Route::prefix('client')->name('client.')->group(function () {
-    
+    Route::resource('products', ProductController::class);
 });
